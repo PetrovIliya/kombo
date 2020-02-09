@@ -17,25 +17,28 @@ int main()
     t.restart();
     for (int i = 1; i <= N; i++)
     {
-        elems[i] = i;
-        reverse[i] = i;
+        elems[i] = reverse[i] = i;
         marks[i] = -1;
     }
 
     marks[0] = 0;
-    elems[0] = elems[N + 1] = counter = N + 1;
+    elems[0] = elems[N + 1] = N + 1;
+    counter = N;
     while (counter != 1)
     {
-        copy(elems.begin(), elems.end(), ostream_iterator<size_t>(cout, " "));
+        //copy(elems.begin(), elems.end(), ostream_iterator<int>(cout, " "));
         counter = N;
-        while (elems[elems[counter] + marks[counter]] > counter)
+        while (elems[reverse[counter] + marks[counter]] > counter && counter > 1)
         {
-            -marks[counter];
+            marks[counter] = -marks[counter];
             counter--;
         }
-        int tmp = elems[elems[counter] + marks[counter]];
-        elems[elems[counter] + marks[counter]] = elems[elems[counter]];
-        elems[elems[counter]] = tmp;
+        int tmp = elems[reverse[counter] + marks[counter]];
+        elems[reverse[counter] + marks[counter]] = elems[reverse[counter]];
+        elems[reverse[counter]] = tmp;
+        tmp = reverse[elems[reverse[counter]]];
+        reverse[elems[reverse[counter]]] = reverse[counter];
+        reverse[counter] = tmp;
     }
     double duration = t.elapsed();
     cout << duration << endl;
