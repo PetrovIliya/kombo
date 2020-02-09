@@ -3,20 +3,40 @@
 #include <vector>
 #include <algorithm>
 #include <iterator>
+#include <map>
 
 using namespace std;
 
+#define N 10
+
 int main()
 {
-    vector <size_t> v = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+    map <int, int> elems, reverse, marks;
+    int counter;
     boost::timer t;
     t.restart();
-    sort(v.begin(), v.end());
-    do
+    for (int i = 1; i <= N; i++)
     {
-        copy(v.begin(), v.end(), ostream_iterator <size_t>(cout, " "));
-        cout << endl;
-    } while (next_permutation(v.begin(), v.end()));
+        elems[i] = i;
+        reverse[i] = i;
+        marks[i] = -1;
+    }
+
+    marks[0] = 0;
+    elems[0] = elems[N + 1] = counter = N + 1;
+    while (counter != 1)
+    {
+        copy(elems.begin(), elems.end(), ostream_iterator<size_t>(cout, " "));
+        counter = N;
+        while (elems[elems[counter] + marks[counter]] > counter)
+        {
+            -marks[counter];
+            counter--;
+        }
+        int tmp = elems[elems[counter] + marks[counter]];
+        elems[elems[counter] + marks[counter]] = elems[elems[counter]];
+        elems[elems[counter]] = tmp;
+    }
     double duration = t.elapsed();
     cout << duration << endl;
     return 0;
