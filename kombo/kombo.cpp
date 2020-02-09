@@ -14,8 +14,7 @@ int main()
     sort(v.begin(), v.end());
     do
     {
-        copy(v.begin(), v.end(), ostream_iterator <size_t>(cout, " "));
-        cout << endl;
+       
     } while (next_permutation(v.begin(), v.end()));
     double duration = t.elapsed();
     cout << duration << endl;
