@@ -94,7 +94,7 @@ int main()
 
     deck.showDeckWithMessage("normal deck of cards is:");
     deck.randomize();
-    deck.showDeckWithMessage("randomize deck of cards is:");
+    deck.showDeckWithMessage("randomized deck of cards is:");
     deck.randomize();
     deck.showDeckWithMessage("and again:");
 
