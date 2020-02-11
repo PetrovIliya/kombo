@@ -1,3 +1,0 @@
-﻿  kombo.cpp
-D:\sdk\boost_1_72_0\boost\timer.hpp(21): message : This header is deprecated. Use the facilities in <boost/timer/timer.hpp> instead.
-  kombo.vcxproj -> D:\projects\kombo\x64\Debug\kombo.exe
